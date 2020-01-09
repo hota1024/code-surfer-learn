@@ -7,146 +7,113 @@ import { github, vsDark } from "@code-surfer/themes";
 
 export const theme = vsDark;
 
-# Hello 👋
-
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
+# Hello world
 
 ---
 
 <CodeSurfer>
 
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
+```typescript
+interface RendererInterface {
+  drawCircle(x: number, y: number, radius: number, color: number): void
 }
 ```
 
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
+```typescript
+interface RendererInterface {
+  drawCircle(x: number, y: number, radius: number, color: number): void
 }
 
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
-
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
+class Circle {
+  constructor(public x: number, public y: number, public radius: number, private renderer: RendererInterface) {}
 }
 ```
 
-```diff 1[10:14],2[15:19],3[22:27],10:12
+```typescript
+interface RendererInterface {
+  drawCircle(x: number, y: number, radius: number, color: number): void
+}
 
+class Circle {
+  constructor(public x: number, public y: number, public radius: number, private renderer: RendererInterface) {}
+
+  draw(color: number) {
+    this.renderer.drawCircle(this.x, this.y, this.radius, color)
+  }
+}
+```
+
+```typescript
+interface RendererInterface {
+  drawCircle(x: number, y: number, radius: number, color: number): void
+}
+
+class Circle {
+  constructor(public x: number, public y: number, public radius: number, private renderer: RendererInterface) {}
+
+  draw(color: number) {
+    this.renderer.drawCircle(this.x, this.y, this.radius, color)
+  }
+}
+
+class CanvasRenderer implements RendererInterface { /* ... */ }
+```
+
+```typescript 13:17
+interface RendererInterface {
+  drawCircle(x: number, y: number, radius: number, color: number): void
+}
+
+class Circle {
+  constructor(public x: number, public y: number, public radius: number, private renderer: RendererInterface) {}
+
+  draw(color: number) {
+    this.renderer.drawCircle(this.x, this.y, this.radius, color)
+  }
+}
+
+class CanvasRenderer implements RendererInterface { /* ... */ }
+
+const circle = new Circle(0, 0, 32, new CanvasRenderer())
+circle.draw(0x0000ff)
+```
+
+```typescript 14:17
+interface RendererInterface {
+  drawCircle(x: number, y: number, radius: number, color: number): void
+}
+
+
+class Circle {
+  constructor(public x: number, public y: number, public radius: number, private renderer: RendererInterface) {}
+
+  draw(color: number) {
+    this.renderer.drawCircle(this.x, this.y, this.radius, color)
+  }
+}
+
+class WebGLRenderer implements RendererInterface { /* ... */ }
+
+const circle = new Circle(0, 0, 32, new WebGLRenderer())
+circle.draw(0x0000ff)
 ```
 
 </CodeSurfer>
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns>
 
-<Step>
+<Step subtitle="TypeScript to JavaScript">
 
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
+```ts
+const PI: number = 3.14
 ```
 
 ```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-```
-
-</Step>
-
-<Step>
-
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
-
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
+"use strict";
+const PI = 3.14;
 ```
 
 </Step>
-
 </CodeSurferColumns>
-
----
-
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
